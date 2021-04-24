@@ -42,7 +42,7 @@ class GithubListFragmentTest {
         mockWebServer = MockWebServer()
         retrofit = Retrofit.Builder()
             .baseUrl(mockWebServer.url("/"))
-            .addConverterFactory(getGsonCoverter())
+            .addConverterFactory(getGsonConverter())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClient.build())
             .build()
@@ -86,7 +86,7 @@ class GithubListFragmentTest {
     }
 
 
-    private fun getGsonCoverter(): GsonConverterFactory {
+    private fun getGsonConverter(): GsonConverterFactory {
         return GsonConverterFactory.create(
             GsonBuilder()
                 .enableComplexMapKeySerialization()
