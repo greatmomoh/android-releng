@@ -64,6 +64,9 @@ android {
     useLibrary 'android.test.runner'
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 /*
@@ -99,6 +102,12 @@ dependencies {
     annotationProcessor deps.app.glideCompiler
 
     implementation deps.androidTest.espressoIdling
+    implementation deps.androidTest.coreTest
+
+    implementation deps.app.fragment
+    implementation deps.test.archTesting
+
+
 }
 
 /*
@@ -108,6 +117,15 @@ dependencies {
     /* Debug Dependencies */
     debugImplementation deps.debug.interceptor
     debugImplementation deps.debug.chuck
+    debugImplementation deps.androidTest.fragmentTesting
+
+
+    androidTestImplementation deps.androidTest.runner
+    androidTestImplementation deps.androidTest.junitExt
+    androidTestImplementation deps.androidTest.coreTest
+
+    debugImplementation deps.test.mockito
+    debugImplementation deps.test.archTesting
 }
 
 /*

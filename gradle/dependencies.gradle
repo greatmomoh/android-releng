@@ -1,58 +1,60 @@
 def version = [
         /* BUILD */
-        buildTools       : '4.0.0',
-        kotlin           : '1.3.21',
-        spotless         : '3.24.2',
-        ktLint           : '0.30.0',
-        safeArgs         : '1.0.0-beta01',
-        jacoco           : '0.8.2',
+        buildTools            : '4.0.0',
+        kotlin                : '1.3.21',
+        spotless              : '3.24.2',
+        ktLint                : '0.30.0',
+        safeArgs              : '1.0.0-beta01',
+        jacoco                : '0.8.2',
 
         /* CONFIG */
-        appBuildTools    : '28.0.3',
-        minSdk           : 21,
-        compileSdk       : 28,
-        targetSdk        : 28,
-        versionCode      : 1,
-        versionName      : '1.0.0',
+        appBuildTools         : '28.0.3',
+        minSdk                : 21,
+        compileSdk            : 28,
+        targetSdk             : 28,
+        versionCode           : 1,
+        versionName           : '1.0.0',
 
         /* APP */
-        appcompat        : '1.0.0',
-        coreKtx          : '1.1.0-alpha04',
-        legacy           : '1.0.0',
-        constraintlayout : '1.1.2',
+        appcompat             : '1.0.0',
+        coreKtx               : '1.1.0-alpha04',
+        legacy                : '1.0.0',
+        constraintlayout      : '1.1.2',
 
-        recyclerview     : '1.0.0',
-        cardview         : '1.0.0',
+        recyclerview          : '1.0.0',
+        cardview              : '1.0.0',
 
-        lifecycle        : '2.0.0',
-        navigation       : '1.0.0-beta01',
+        lifecycle             : '2.0.0',
+        navigation            : '1.0.0-beta01',
 
-        material         : '1.0.0',
-        rxJava           : '2.2.5',
-        rxJavaExtensions : '0.20.5',
-        rxAndroid        : '2.1.0',
-        gson             : '2.8.5',
-        retrofit         : '2.5.0',
-        glide            : '4.9.0',
+        material              : '1.0.0',
+        rxJava                : '2.2.5',
+        rxJavaExtensions      : '0.20.5',
+        rxAndroid             : '2.1.0',
+        gson                  : '2.8.5',
+        retrofit              : '2.5.0',
+        glide                 : '4.9.0',
 
         /* DEBUG */
-        interceptor      : '3.8.0',
-        chuck            : '1.0.4',
+        interceptor           : '3.8.0',
+        chuck                 : '1.0.4',
 
         /* UNIT TEST */
-        junit            : '4.12',
-        openpojo         : '0.8.12',
-        mockito          : '2.23.4',
-        powermock        : '2.0.0',
-        mockitokotlin    : '2.1.0',
-        mockwebserver    : '3.12.0',
+        junit                 : '4.12',
+        openpojo              : '0.8.12',
+        mockito               : '2.23.4',
+        powermock             : '2.0.0',
+        mockitokotlin         : '2.1.0',
+        mockwebserver         : '3.12.0',
+        archtesting           : '2.1.0',
 
         /* ANDROID TEST */
-        androidTestRunner: '1.1.1',
-        junitExt         : '1.1.0',
-        coreTest         : '1.1.0',
-        espresso         : '3.1.1',
-        uiautomator      : '2.2.0',
+        androidTestRunner     : '1.1.1',
+        junitExt              : '1.1.0',
+        coreTest              : '1.1.0',
+        espresso              : '3.1.1',
+        uiautomator           : '2.2.0',
+        fragmentTestingVersion: '1.3.3',
 ]
 
 /**
@@ -72,10 +74,10 @@ def build = [
         ],
 
         plugin: [
-                android  : "com.android.tools.build:gradle:${version.buildTools}",
-                safeArgs : "android.arch.navigation:navigation-safe-args-gradle-plugin:${version.safeArgs}",
-                spotless : "com.diffplug.spotless:spotless-plugin-gradle:${version.spotless}",
-                kotlin   : "org.jetbrains.kotlin:kotlin-gradle-plugin:${version.kotlin}",
+                android : "com.android.tools.build:gradle:${version.buildTools}",
+                safeArgs: "android.arch.navigation:navigation-safe-args-gradle-plugin:${version.safeArgs}",
+                spotless: "com.diffplug.spotless:spotless-plugin-gradle:${version.spotless}",
+                kotlin  : "org.jetbrains.kotlin:kotlin-gradle-plugin:${version.kotlin}",
         ]
 ]
 
@@ -110,6 +112,8 @@ def app = [
 
                 glide           : "com.github.bumptech.glide:glide:${version.glide}",
                 glideCompiler   : "com.github.bumptech.glide:compiler:${version.glide}",
+
+                fragment        : "androidx.fragment:fragment-ktx:${version.fragmentTestingVersion}"
         ],
 
         /*
@@ -158,6 +162,7 @@ def test = [
         powermockMockito: "org.powermock:powermock-api-mockito2:${version.powermock}",
         mockitokotlin   : "com.nhaarman.mockitokotlin2:mockito-kotlin:${version.mockitokotlin}",
         mockwebserver   : "com.squareup.okhttp3:mockwebserver:${version.mockwebserver}",
+        archTesting     : "androidx.arch.core:core-testing:${version.archtesting}",
 
         /* Android Test dependencies */
         android         : [
@@ -169,6 +174,7 @@ def test = [
                 espressoIntents: "androidx.test.espresso:espresso-intents:${version.espresso}",
                 espressoIdling : "androidx.test.espresso:espresso-idling-resource:${version.espresso}",
                 uiautomator    : "androidx.test.uiautomator:uiautomator:${version.uiautomator}",
+                fragmentTesting: "androidx.fragment:fragment-testing:${version.fragmentTestingVersion}",
         ]
 ]
 
