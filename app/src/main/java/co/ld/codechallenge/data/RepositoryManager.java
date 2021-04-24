@@ -11,8 +11,8 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Handles core functionality, it is the single source of truth.
- * Gets data from storage, server, saves, handles responses gracefully.
+ * Handles core functionality, it is the single source of truth. Gets data from storage, server,
+ * saves, handles responses gracefully.
  */
 public final class RepositoryManager {
 
@@ -32,10 +32,9 @@ public final class RepositoryManager {
     }
 
     /**
-     * Executes request to get data.
-     * First data is retrieved from storage, upon failure, the request is sent to server
-     * to get data, it also adds functionality to get data from both storage &amp; server.
-     * This acts as offline first approach.
+     * Executes request to get data. First data is retrieved from storage, upon failure, the request
+     * is sent to server to get data, it also adds functionality to get data from both storage &amp;
+     * server. This acts as offline first approach.
      *
      * @param repository Repository to look up.
      * @param <T> Type of data from server
@@ -44,15 +43,17 @@ public final class RepositoryManager {
     @NonNull
     @CheckResult
     public <T> Single<T> execute(@NonNull Repository<T> repository) {
-        Single<T> source = Single.defer(() -> {
-            T fromCache = repository.getCachedData();
-            if (fromCache != null) {
-                return Single.just(fromCache);
-            }
+        Single<T> source =
+                Single.defer(
+                        () -> {
+                            T fromCache = repository.getCachedData();
+                            if (fromCache != null) {
+                                return Single.just(fromCache);
+                            }
 
-            // Executes request and retrieves data from server.
-            return repository.getRequest();
-        });
+                            // Executes request and retrieves data from server.
+                            return repository.getRequest();
+                        });
 
         return attachIoThread(source);
     }

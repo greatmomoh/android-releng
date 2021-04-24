@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.Objects;
-
 import androidx.annotation.CallSuper;
 import androidx.annotation.CheckResult;
 import androidx.annotation.LayoutRes;
@@ -20,10 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
+import java.util.Objects;
 
-/**
- * Root fragment/view to handles common functionality across app.
- */
+/** Root fragment/view to handles common functionality across app. */
 @SuppressWarnings("all")
 public abstract class BaseFragment<T extends ViewModel> extends Fragment {
 
@@ -74,8 +70,10 @@ public abstract class BaseFragment<T extends ViewModel> extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         // Create View.
         return inflater.inflate(getLayout(), container, false);
     }

@@ -11,9 +11,7 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-/**
- * Skeleton template of RESTful webservices, that are used to communicate with server.
- */
+/** Skeleton template of RESTful webservices, that are used to communicate with server. */
 public interface Webservice {
 
     /**

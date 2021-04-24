@@ -5,14 +5,11 @@
 package co.ld.codechallenge.common;
 
 import android.os.Bundle;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- * Root activity responsible for common operation across the app.
- */
+/** Root activity responsible for common operation across the app. */
 public abstract class BaseActivity extends AppCompatActivity {
 
     /**
@@ -24,14 +21,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @LayoutRes
     protected abstract int getLayout();
 
-    /**
-     * Views are ready to be initialized.
-     */
+    /** Views are ready to be initialized. */
     protected abstract void initViews();
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

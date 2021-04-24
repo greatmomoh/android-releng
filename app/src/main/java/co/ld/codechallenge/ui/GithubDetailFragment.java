@@ -4,16 +4,14 @@
 
 package co.ld.codechallenge.ui;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,12 +20,10 @@ import co.ld.codechallenge.common.BaseFragment;
 import co.ld.codechallenge.model.search.Repo;
 import co.ld.codechallenge.util.AppConstant;
 import co.ld.codechallenge.util.EspressoIdlingResource;
+import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static androidx.navigation.Navigation.findNavController;
-
-/**
- * Detailed view of selected repository.
- */
+/** Detailed view of selected repository. */
 public class GithubDetailFragment extends BaseFragment {
 
     // Selected item
@@ -92,9 +88,7 @@ public class GithubDetailFragment extends BaseFragment {
         fab = view.findViewById(R.id.fab);
     }
 
-    /**
-     * Update data to views.
-     */
+    /** Update data to views. */
     private void setData() {
         EspressoIdlingResource.increment();
         name.setText(getString(R.string.template_full_name, mRepo.getFullName()));
@@ -113,14 +107,14 @@ public class GithubDetailFragment extends BaseFragment {
 
         EspressoIdlingResource.decrement();
 
-        //Start browser intent on fab click
-        fab.setOnClickListener((View v) -> {
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(mRepo.getUrl()));
-            if (i.resolveActivity(requireContext().getPackageManager()) != null) {
-                startActivity(i);
-            }
-        });
-
+        // Start browser intent on fab click
+        fab.setOnClickListener(
+                (View v) -> {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(mRepo.getUrl()));
+                    if (i.resolveActivity(requireContext().getPackageManager()) != null) {
+                        startActivity(i);
+                    }
+                });
     }
 }

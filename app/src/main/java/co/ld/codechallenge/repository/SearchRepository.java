@@ -4,9 +4,6 @@
 
 package co.ld.codechallenge.repository;
 
-import java.util.List;
-import java.util.Objects;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +14,10 @@ import co.ld.codechallenge.model.search.RepoSearch;
 import co.ld.codechallenge.network.NetworkManager;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import java.util.List;
+import java.util.Objects;
 
-/**
- * Responsible getting data from cache or server when requested.
- */
+/** Responsible getting data from cache or server when requested. */
 public class SearchRepository implements Repository<List<Repo>> {
 
     // Query prefix

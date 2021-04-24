@@ -5,14 +5,13 @@
 package co.ld.codechallenge.network;
 
 import android.util.Pair;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * When Live data is used, error cannot be dispatched directly.
- * Hence live data is wrapped inside response which can deliver response &amp; error
+ * When Live data is used, error cannot be dispatched directly. Hence live data is wrapped inside
+ * response which can deliver response &amp; error
  *
  * @param <T> Type of response.
  */
@@ -29,27 +28,21 @@ public class Response<T> extends Pair<T, Throwable> {
         super(first, second);
     }
 
-    /**
-     * Create Response with data
-     */
+    /** Create Response with data */
     @NonNull
     @CheckResult
     public static <T> Response<T> createResponse(@Nullable T data) {
         return createResponse(data, null);
     }
 
-    /**
-     * Create Response with error
-     */
+    /** Create Response with error */
     @NonNull
     @CheckResult
     public static <T> Response<T> createResponse(@Nullable Throwable err) {
         return createResponse(null, err);
     }
 
-    /**
-     * Create Response with data &amp; error
-     */
+    /** Create Response with data &amp; error */
     @NonNull
     @CheckResult
     public static <T> Response<T> createResponse(@Nullable T data, @Nullable Throwable err) {
@@ -59,17 +52,13 @@ public class Response<T> extends Pair<T, Throwable> {
         return new Response<>(data, err);
     }
 
-    /**
-     * Get data or {@code null}
-     */
+    /** Get data or {@code null} */
     @Nullable
     public T getData() {
         return first;
     }
 
-    /**
-     * Get error or {@code null}
-     */
+    /** Get error or {@code null} */
     @Nullable
     public Throwable getError() {
         return second;

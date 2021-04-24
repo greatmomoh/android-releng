@@ -4,13 +4,12 @@
 
 package co.ld.codechallenge.network;
 
-import java.util.Objects;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import co.ld.codechallenge.data.LiveDataWrap;
 import io.reactivex.functions.BiConsumer;
+import java.util.Objects;
 
 /**
  * Bridge between Rx, LiveData &amp; Error.
@@ -19,8 +18,7 @@ import io.reactivex.functions.BiConsumer;
  */
 public class LiveDataSubscriber<T> implements BiConsumer<T, Throwable> {
 
-    @NonNull
-    private final LiveDataWrap<T> repoHolder;
+    @NonNull private final LiveDataWrap<T> repoHolder;
 
     private LiveDataSubscriber(@NonNull LiveDataWrap<T> liveDataHolder) {
         repoHolder = Objects.requireNonNull(liveDataHolder, "Data Wrapper cannot be null");

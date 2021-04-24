@@ -4,11 +4,6 @@
 
 package co.ld.codechallenge.viewmodel;
 
-import org.reactivestreams.Publisher;
-
-import java.util.List;
-import java.util.Objects;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,22 +17,21 @@ import co.ld.codechallenge.network.LiveDataSubscriber;
 import co.ld.codechallenge.network.Response;
 import co.ld.codechallenge.repository.SearchRepository;
 import io.reactivex.disposables.CompositeDisposable;
+import java.util.List;
+import java.util.Objects;
+import org.reactivestreams.Publisher;
 
 @SuppressWarnings("unused")
 public class GithubViewModel extends ViewModel {
 
     // Create Repository that acts as single source of data
-    @NonNull
-    private final SearchRepository repository = new SearchRepository();
+    @NonNull private final SearchRepository repository = new SearchRepository();
 
     // Create live data holder.
-    @NonNull
-    private final LiveDataWrap<List<Repo>> liveData = new LiveDataWrap<>();
+    @NonNull private final LiveDataWrap<List<Repo>> liveData = new LiveDataWrap<>();
 
-    @Nullable
-    private LifecycleOwner lifecycle;
-    @Nullable
-    private CompositeDisposable disposables;
+    @Nullable private LifecycleOwner lifecycle;
+    @Nullable private CompositeDisposable disposables;
 
     /**
      * Get list of Repositories for the query
@@ -55,10 +49,10 @@ public class GithubViewModel extends ViewModel {
 
         disposables.add(
                 // Get data
-                repository.getData(query)
+                repository
+                        .getData(query)
                         // Subscribe for Rx result with LiveData
-                        .subscribe(LiveDataSubscriber.with(liveData))
-        );
+                        .subscribe(LiveDataSubscriber.with(liveData)));
         return liveData;
     }
 

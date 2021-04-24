@@ -4,23 +4,21 @@
 
 package co.ld.codechallenge.network;
 
-import com.google.gson.GsonBuilder;
-
 import androidx.annotation.CheckResult;
 import androidx.annotation.VisibleForTesting;
 import androidx.annotation.WorkerThread;
 import co.ld.codechallenge.network.factory.Webservice;
+import com.google.gson.GsonBuilder;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Handles all network operation.
- * This internally handles token authentication.
- * When token is expired, pull all pending calls in queue &amp;
- * executes token request upon new token received, executes pending request with new token.
- * In case of token failure, all pending request is dispatched with error.
+ * Handles all network operation. This internally handles token authentication. When token is
+ * expired, pull all pending calls in queue &amp; executes token request upon new token received,
+ * executes pending request with new token. In case of token failure, all pending request is
+ * dispatched with error.
  */
 public final class NetworkManager {
 
@@ -57,12 +55,13 @@ public final class NetworkManager {
                 if (mRetrofit == null) {
                     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-                    mRetrofit = new Retrofit.Builder()
-                            .baseUrl(BASE_URL)
-                            .addConverterFactory(getGsonCoverter())
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                            .client(httpClient.build())
-                            .build();
+                    mRetrofit =
+                            new Retrofit.Builder()
+                                    .baseUrl(BASE_URL)
+                                    .addConverterFactory(getGsonCoverter())
+                                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                                    .client(httpClient.build())
+                                    .build();
                 }
             }
         }
@@ -77,19 +76,15 @@ public final class NetworkManager {
     }
 
     /**
-     * Creates custom copy of {@link com.google.gson.Gson}
-     * Avoid creating multiple copies of Gson, as it is heavy.
+     * Creates custom copy of {@link com.google.gson.Gson} Avoid creating multiple copies of Gson,
+     * as it is heavy.
      *
      * @return copy of Gson.
      */
     @CheckResult
     private GsonConverterFactory getGsonCoverter() {
         return GsonConverterFactory.create(
-                new GsonBuilder()
-                        .enableComplexMapKeySerialization()
-                        .setLenient()
-                        .create()
-        );
+                new GsonBuilder().enableComplexMapKeySerialization().setLenient().create());
     }
 
     /**

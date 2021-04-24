@@ -5,7 +5,6 @@
 package co.ld.codechallenge.ui.factory;
 
 import android.view.View;
-
 import androidx.annotation.NonNull;
 
 /**
@@ -15,8 +14,6 @@ import androidx.annotation.NonNull;
  */
 public interface OnItemClickListener<T> {
 
-    /**
-     * Callback when item is clicked
-     */
+    /** Callback when item is clicked */
     void onClick(@NonNull T item, @NonNull View view, int position);
 }

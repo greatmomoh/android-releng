@@ -6,44 +6,47 @@ package co.ld.codechallenge.model.search;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+import androidx.annotation.NonNull;
 import com.google.gson.annotations.SerializedName;
 
-import androidx.annotation.NonNull;
-
-/**
- * Repository info
- */
+/** Repository info */
 public class Repo implements Parcelable {
 
-    public static final Parcelable.Creator<Repo> CREATOR = new Parcelable.Creator<Repo>() {
-        @Override
-        public Repo createFromParcel(Parcel source) {
-            return new Repo(source);
-        }
+    public static final Parcelable.Creator<Repo> CREATOR =
+            new Parcelable.Creator<Repo>() {
+                @Override
+                public Repo createFromParcel(Parcel source) {
+                    return new Repo(source);
+                }
 
-        @Override
-        public Repo[] newArray(int size) {
-            return new Repo[size];
-        }
-    };
+                @Override
+                public Repo[] newArray(int size) {
+                    return new Repo[size];
+                }
+            };
+
     @SerializedName("id")
     private int id;
+
     @SerializedName("node_id")
     private String fullName;
+
     @SerializedName("name")
     private String name;
+
     @SerializedName("description")
     private String description;
+
     @SerializedName("owner")
     private Owner owner;
+
     @SerializedName("html_url")
     private String url;
+
     @SerializedName("stargazers_count")
     private int stargazersCount;
 
-    public Repo() {
-    }
+    public Repo() {}
 
     protected Repo(Parcel in) {
         id = in.readInt();
@@ -130,10 +133,6 @@ public class Repo implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return "Repo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        return "Repo{" + "id=" + id + ", name='" + name + '\'' + ", url='" + url + '\'' + '}';
     }
 }

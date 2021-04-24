@@ -9,11 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.RequestManager;
-
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ListAdapter;
@@ -22,18 +17,16 @@ import co.ld.codechallenge.R;
 import co.ld.codechallenge.model.search.Repo;
 import co.ld.codechallenge.ui.factory.OnItemClickListener;
 import co.ld.codechallenge.util.DiffUtilHelper;
+import com.bumptech.glide.RequestManager;
+import java.util.Objects;
 
-/**
- * Recycler Adapter for displaying list of results.
- */
+/** Recycler Adapter for displaying list of results. */
 public class RepoListAdapter extends ListAdapter<Repo, RepoListAdapter.RepoViewHolder> {
 
     // Image renderer
-    @NonNull
-    private final RequestManager mGlide;
+    @NonNull private final RequestManager mGlide;
     // Event listener
-    @Nullable
-    private OnItemClickListener<Repo> mItemClickListener;
+    @Nullable private OnItemClickListener<Repo> mItemClickListener;
 
     public RepoListAdapter(@NonNull RequestManager glide) {
         // Pass diff helper.
@@ -44,9 +37,10 @@ public class RepoListAdapter extends ListAdapter<Repo, RepoListAdapter.RepoViewH
     @NonNull
     @Override
     public RepoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                // Update item view
-                .inflate(R.layout.github_item, parent, false);
+        View view =
+                LayoutInflater.from(parent.getContext())
+                        // Update item view
+                        .inflate(R.layout.github_item, parent, false);
 
         return new RepoViewHolder(view);
     }
@@ -72,9 +66,7 @@ public class RepoListAdapter extends ListAdapter<Repo, RepoListAdapter.RepoViewH
         mItemClickListener = listener;
     }
 
-    /**
-     * View Holder pattern, used by recycler view.
-     */
+    /** View Holder pattern, used by recycler view. */
     class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView name;

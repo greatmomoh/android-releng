@@ -4,17 +4,14 @@
 
 package co.ld.codechallenge.util;
 
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.test.espresso.IdlingResource;
 import androidx.test.espresso.idling.CountingIdlingResource;
 import co.ld.codechallenge.BuildConfig;
+import java.util.Objects;
 
-/**
- * Global Espresso idling resource
- */
+/** Global Espresso idling resource */
 public final class EspressoIdlingResource {
 
     private static final String RES_NAME = "EspressoIdlingResource";
@@ -25,18 +22,14 @@ public final class EspressoIdlingResource {
         throw new UnsupportedOperationException("Instance should not be created");
     }
 
-    /**
-     * Start waiting for data
-     */
+    /** Start waiting for data */
     public static void increment() {
         if (sIdlingResource != null && BuildConfig.DEBUG) {
             sIdlingResource.increment();
         }
     }
 
-    /**
-     * Data is received
-     */
+    /** Data is received */
     public static void decrement() {
         if (sIdlingResource != null && BuildConfig.DEBUG) {
             sIdlingResource.decrement();
@@ -49,9 +42,7 @@ public final class EspressoIdlingResource {
         return Objects.requireNonNull(sIdlingResource, "Missing Idling Resource");
     }
 
-    /**
-     * Set Custom idling resource
-     */
+    /** Set Custom idling resource */
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
     public static synchronized void setIdlingResource(
             @NonNull CountingIdlingResource idlingResource) {
@@ -60,9 +51,7 @@ public final class EspressoIdlingResource {
         }
     }
 
-    /**
-     * Set default idling resource.
-     */
+    /** Set default idling resource. */
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
     public static void setDefaultIdlingResource() {
         setIdlingResource(new CountingIdlingResource(RES_NAME, true));

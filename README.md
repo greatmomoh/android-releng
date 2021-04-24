@@ -28,7 +28,7 @@ Here is their wishlist:
 - TIP: You may find trouble in launching an emulator on Travis or GitLab, alternatively use [Firebase Test Lab](https://firebase.google.com/docs/test-lab/android/command-line)
 
 ### Static Analysis
-- Enable and/or add a linting analysis tool. 
+- Enable and/or add a linting analysis tool.
 - Store the test and linting results documentation as artifacts or cached files.
 
 ### Additional Tips

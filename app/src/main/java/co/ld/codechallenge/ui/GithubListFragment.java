@@ -4,16 +4,12 @@
 
 package co.ld.codechallenge.ui;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
-
-import java.util.List;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,12 +25,11 @@ import co.ld.codechallenge.ui.factory.OnItemClickListener;
 import co.ld.codechallenge.util.AppConstant;
 import co.ld.codechallenge.util.EspressoIdlingResource;
 import co.ld.codechallenge.viewmodel.GithubViewModel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import java.util.List;
 
-import static androidx.navigation.Navigation.findNavController;
-
-/**
- * Main View for listing repositories for the searched query.
- */
+/** Main View for listing repositories for the searched query. */
 public class GithubListFragment extends BaseFragment<GithubViewModel>
         implements OnItemClickListener<Repo> {
 
@@ -87,22 +82,17 @@ public class GithubListFragment extends BaseFragment<GithubViewModel>
         repoRecycler.setAdapter(mAdapter);
     }
 
-    /**
-     * Initialize event listeners
-     */
+    /** Initialize event listeners */
     private void initListener() {
         mAdapter.setOnItemClickLister(this);
         mySwipeRefreshLayout.setOnRefreshListener(this::getData);
     }
 
-    /**
-     * Fetch data
-     */
+    /** Fetch data */
     private void getData() {
         EspressoIdlingResource.increment();
         progressIndicator.setVisibility(View.VISIBLE);
-        mViewModel.getRepos(RAW_QUERY)
-                .observe(getViewLifecycleOwner(), this::consumeData);
+        mViewModel.getRepos(RAW_QUERY).observe(getViewLifecycleOwner(), this::consumeData);
     }
 
     /**

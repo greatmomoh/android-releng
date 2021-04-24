@@ -7,7 +7,6 @@ apply from: "$project.rootDir/gradle/jacoco.gradle"
 
 android {
     compileSdkVersion deps.buildConfig.compileSdk
-    buildToolsVersion deps.buildConfig.buildTools
 
     defaultConfig {
         applicationId deps.buildConfig.applicationId
@@ -153,4 +152,3 @@ dependencies {
     androidTestImplementation deps.androidTest.espressoIdling
     androidTestImplementation deps.androidTest.uiautomator
 }
-

@@ -4,9 +4,7 @@
 
 package co.ld.codechallenge.model.login;
 
-/**
- * Place holder for representing package structure
- */
+/** Place holder for representing package structure */
 @SuppressWarnings("ALL")
 public class PlaceHolder {
     // Do nothing

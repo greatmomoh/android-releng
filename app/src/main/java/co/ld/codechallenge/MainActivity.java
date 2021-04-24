@@ -8,9 +8,7 @@ import androidx.annotation.LayoutRes;
 import androidx.navigation.fragment.NavHostFragment;
 import co.ld.codechallenge.common.BaseActivity;
 
-/**
- * Only screen acts as interaction layer between user and device
- */
+/** Only screen acts as interaction layer between user and device */
 public class MainActivity extends BaseActivity {
 
     @LayoutRes

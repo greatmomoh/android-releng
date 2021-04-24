@@ -8,6 +8,7 @@ buildscript {
         classpath deps.buildPlugin.spotless
         classpath deps.buildPlugin.safeArgs
         classpath deps.buildPlugin.kotlin
+        classpath 'com.android.tools.build:gradle'
     }
 }
 
