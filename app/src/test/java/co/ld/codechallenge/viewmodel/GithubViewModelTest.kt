@@ -1,10 +1,12 @@
 package co.ld.codechallenge.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.Observer
 import co.ld.codechallenge.data.DataFactory
-import co.ld.codechallenge.model.search.Repo
-import co.ld.codechallenge.network.Response
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -24,7 +26,7 @@ class GithubViewModelTest {
     }
 
     @Test
-    fun `getRepos`() {
+    fun getRepos() {
         githubViewModel.getRepos(DataFactory.testQuery)
             .observe(
                 mockLifecycleOwner(),
@@ -32,7 +34,7 @@ class GithubViewModelTest {
     }
 
     @Test
-    fun `getReposRx`() {
+    fun getReposRx() {
         LiveDataReactiveStreams.fromPublisher(
             githubViewModel.with(mockLifecycleOwner())
                 .getRepoRx(DataFactory.testQuery)
@@ -40,10 +42,9 @@ class GithubViewModelTest {
     }
 
     @Test
-    fun `with`() {
+    fun with() {
         Assert.assertNotNull(githubViewModel.with(mockLifecycleOwner()))
     }
-
 
     private fun mockLifecycleOwner(): LifecycleOwner {
         val lcOwner = Mockito.mock(LifecycleOwner::class.java)
@@ -52,5 +53,4 @@ class GithubViewModelTest {
         `when`(lcOwner.lifecycle).thenReturn(lcRegistry)
         return lcOwner
     }
-
 }

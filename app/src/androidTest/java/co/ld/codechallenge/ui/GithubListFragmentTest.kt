@@ -85,7 +85,6 @@ class GithubListFragmentTest {
         onView(withId(R.id.repo_list)).check(matches(withListSize(5)))
     }
 
-
     private fun getGsonConverter(): GsonConverterFactory {
         return GsonConverterFactory.create(
             GsonBuilder()
@@ -94,7 +93,6 @@ class GithubListFragmentTest {
                 .create()
         )
     }
-
 
     @Throws(IOException::class)
     private fun readFileFromResources(fileName: String): String {
