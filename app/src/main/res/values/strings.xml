@@ -7,4 +7,5 @@
     <string name="template_url">Project url : %s</string>
     <string name="template_username">Username : %s</string>
     <string name="template_star">Stars : %d</string>
+    <string name="open_user_link">open user link</string>
 </resources>
