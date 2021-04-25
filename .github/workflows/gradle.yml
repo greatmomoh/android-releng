@@ -42,7 +42,7 @@ jobs:
   ## 5
   apk:
     name: Generate APK
-    runs-on: ubuntu-18.04
+    runs-on: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v1
