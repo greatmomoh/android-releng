@@ -37,13 +37,10 @@ jobs:
         arch: x86_64
         profile: Nexus 6
         script: ./gradlew connectedCheck
-
-
   ## 5
   apk:
     name: Generate APK
     runs-on: [ubuntu-latest]
-
     steps:
       - uses: actions/checkout@v1
       - name: set up JDK 1.8
